@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import bannerImage from "../../assets/banner.png";
 import { Button } from "../../components/Button";
@@ -7,6 +7,12 @@ import { Header } from "../../components/Header";
 import { Container, TextContent, Title, TitleHightLight } from "./styles";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const hendleClickSignIn = () => {
+    navigate("/login");
+  };
+
   return (
     <>
       <Header />
@@ -27,11 +33,11 @@ const Home = () => {
           <Button
             title="Começar agora"
             variant="secondary"
-            onClick={() => null}
+            onClick={hendleClickSignIn}
           />
         </div>
         <div>
-          <img src={bannerImage} alt="Imagem principal" />
+          <img src={bannerImage} alt="Imagem principal do site" />
         </div>
       </Container>
     </>

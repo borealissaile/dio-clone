@@ -12,23 +12,37 @@ import {
   Row,
   Wrapper,
 } from "./styles";
+import { UserPicture } from "../Card/styles";
 
-const Header = () => {
+const Header = ({ autenticado }) => {
   return (
     <Wrapper>
       <Container>
         <Row>
           <img src={logo} alt="Logo da dio" />
-          <BuscarInputContainer>
-            <Input placeholder="Buscar" />
-          </BuscarInputContainer>
-          <Menu>Live Code</Menu>
-          <Menu>Global</Menu>
+          {autenticado ? (
+            <>
+              <BuscarInputContainer>
+                <Input placeholder="Buscar" />
+              </BuscarInputContainer>
+              <Menu>Live Code</Menu>
+              <Menu>Global</Menu>
+            </>
+          ) : null}
         </Row>
         <Row>
-          <MenuRight href="#">Home</MenuRight>
-          <Button title="Entrar" />
-          <Button title="cadastrar" />
+          {autenticado ? (
+            <UserPicture
+              src="https://avatars.githubusercontent.com/u/162886899?v=4"
+              alt="Avatar "
+            />
+          ) : (
+            <>
+              <MenuRight href="#">Home</MenuRight>
+              <Button title="Entrar" />
+              <Button title="cadastrar" />
+            </>
+          )}
         </Row>
       </Container>
     </Wrapper>
